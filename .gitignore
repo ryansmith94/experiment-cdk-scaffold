@@ -1,2 +1,6 @@
 .DS_STORE
 node_modules
+dist
+*.dist.*
+.cdk.staging
+cdk.out
