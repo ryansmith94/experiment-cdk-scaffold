@@ -27,15 +27,15 @@ export async function createApiLambdaConstructor(lambdaName: string) {
   };
 }
 
-export async function createServiceConstructor() {
-  const serviceName = 'service';
-  const lambdaName = `${serviceName}-GET-lambda`;
+export async function createApiDemoConstructor() {
+  const resourceName = 'api-demo';
+  const lambdaName = `${resourceName}-get-lambda`;
   const constructApiLambda = await createApiLambdaConstructor(lambdaName);
 
   return (scope: Construct) => {
     const serviceIntegration = constructApiLambda(scope);
-    const api = new RestApi(scope, `${serviceName}-api`);
-    const resource = api.root.addResource(serviceName);
+    const api = new RestApi(scope, `${resourceName}-api`);
+    const resource = api.root.addResource(resourceName);
     resource.addMethod('GET', serviceIntegration);
   };
 }
