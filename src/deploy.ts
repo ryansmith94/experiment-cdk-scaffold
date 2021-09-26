@@ -1,15 +1,15 @@
 // npx ts-node src/deploy.ts
 import * as cdk from '@aws-cdk/core';
 import { Construct, Stack, StackProps } from '@aws-cdk/core';
-import { deployService } from './service/service.deploy';
+import { createServiceConstructor } from './service/deploy';
 
 async function main() {
   const scope = new cdk.App();
-  const service = await deployService();
+  const constructService = await createServiceConstructor();
   class ServiceStack extends Stack {
     constructor(scope: Construct, id: string, props?: StackProps) {
       super(scope, id, props);
-      service(this);
+      constructService(this);
     }
   }
 
