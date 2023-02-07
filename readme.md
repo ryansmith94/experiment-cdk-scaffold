@@ -1,5 +1,6 @@
 # Template Experiment
 
+1. Install the correct Node version with `nvm install`
 1. Install dependencies with `npm ci`
 1. Build the code with `npm run build`
 1. Configure AWS with `aws configure`
